@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2024 at 09:48 PM
+-- Generation Time: Mar 14, 2024 at 04:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecommerce`
 --
-CREATE DATABASE IF NOT EXISTS `ecommerce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ecommerce`;
 
 -- --------------------------------------------------------
 
@@ -29,20 +27,20 @@ USE `ecommerce`;
 -- Table structure for table `profile`
 --
 
-DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL
+  `last_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`) VALUES
-(3, 1, 'Mister', 'Blue');
+INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `middle_name`) VALUES
+(3, 1, 'Mister', 'Blue', '');
 
 -- --------------------------------------------------------
 
@@ -50,20 +48,18 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`) VALUE
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password_hash` varchar(60) NOT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT 1
+  `password_hash` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password_hash`, `active`) VALUES
-(1, 'Tarzan', '$2y$10$.c/0uj/ezTONgPUYzD/8auuOtxC.pllo8LOotHZVecYKP3XV3EmgK', 1);
+INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
+(1, 'Tarzan', '$2y$10$.c/0uj/ezTONgPUYzD/8auuOtxC.pllo8LOotHZVecYKP3XV3EmgK');
 
 --
 -- Indexes for dumped tables
