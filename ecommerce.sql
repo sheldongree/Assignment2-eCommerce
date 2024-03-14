@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2024 at 04:41 AM
+-- Generation Time: Mar 14, 2024 at 05:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,6 +45,34 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `midd
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `publication`
+--
+
+CREATE TABLE `publication` (
+  `publication_id` int(11) NOT NULL,
+  `profile_id` int(11) NOT NULL,
+  `publication_title` varchar(50) NOT NULL,
+  `publication_text` varchar(50) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `publication_status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publication_comment`
+--
+
+CREATE TABLE `publication_comment` (
+  `publication_comment_id` int(11) NOT NULL,
+  `publication_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -71,6 +99,21 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `publication`
+--
+ALTER TABLE `publication`
+  ADD PRIMARY KEY (`publication_id`),
+  ADD KEY `profile_id` (`profile_id`);
+
+--
+-- Indexes for table `publication_comment`
+--
+ALTER TABLE `publication_comment`
+  ADD PRIMARY KEY (`publication_comment_id`),
+  ADD KEY `publication_id` (`publication_id`),
+  ADD KEY `profile_id` (`profile_id`);
 
 --
 -- Indexes for table `user`
