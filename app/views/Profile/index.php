@@ -12,9 +12,15 @@
 		<dd><?= $data->first_name ?></dd>
 		<dt>Last name:</dt>
 		<dd><?= $data->last_name ?></dd>
+		<dt>Middle name:</dt>
+		<dd><?= $data->middle_name ?></dd>
 		</dl>
 		<a href='/Profile/modify'>Modify my profile</a> | 
-		<a href='/Profile/delete'>Delete my profile</a>
+		<a href='/Profile/delete'>Delete my profile</a> |
+		<a href='/User/logout'>Log Out</a> |
+		<a href='/Publication/createPost'>Create a post</a>
+
+
 	</div>
 </body>
 </html>

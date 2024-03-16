@@ -22,3 +22,5 @@ $this->addRoute('Example/index' , 'Example,index');
 $this->addRoute('Example/clock','Example,clock');
 $this->addRoute('Example/passingData','Example,passingData');
 $this->addRoute('Example/count','Example,count');
+
+$this->addRoute('Publication/createPost', 'Publication,publishPost');

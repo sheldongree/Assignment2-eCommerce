@@ -14,6 +14,9 @@
 				<label>Last name:<input type="text" class="form-control" name="last_name" placeholder="Doe" /></label>
 			</div>
 			<div class="form-group">
+				<label>Middle name:<input type="text" class="form-control" name="middle_name" placeholder="Jhonson" /></label>
+			</div>
+			<div class="form-group">
 				<input type="submit" name="action" value="Record my profile" /> 
 				<a href='/Profile/index'>Cancel</a> (should not be here)
 			</div>

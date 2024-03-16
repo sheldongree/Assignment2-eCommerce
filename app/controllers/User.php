@@ -13,7 +13,7 @@ class User extends \app\core\Controller{
 			$user = $user->get($username);
 			//check the password against the hash
 			$password = $_POST['password'];
-			if($user && $user->active && password_verify($password, $user->password_hash)){
+			if($user && password_verify($password, $user->password_hash)){
 				//remember that this is the user logging in...
 				$_SESSION['user_id'] = $user->user_id;
 
