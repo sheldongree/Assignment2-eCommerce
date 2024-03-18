@@ -50,4 +50,21 @@ class Publication extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Publication');
         return $STMT->fetchAll();
     }
+
+    public function update($publication) {
+        $SQL = 'UPDATE publication SET publication_title = :publication_title, publication_text = :publication_text, publication_status = :publication_status WHERE publication_id = :publication_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'publication_id' => $publication->publication_id,
+            'publication_title' => $publication->publication_title,
+            'publication_text' => $publication->publication_text,
+            'publication_status' => $publication->publication_status
+        ]);
+    }
+
+    public function delete($publication_id) {
+        $SQL = 'DELETE FROM publication WHERE publication_id = :publication_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['publication_id' => $publication_id]);
+    }
 }

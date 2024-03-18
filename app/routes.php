@@ -31,6 +31,6 @@ $this->addRoute('Publication/viewAll', 'Publication,viewAll');
 
 $this->addRoute('Publication/index/{publication_id}', 'Publication,index');
 $this->addRoute('Publication/addComment/{publication_id}', 'Publication,addComment');
-$this->addRoute('Publication/editPublication/{publication_id}', 'Publication,editPublication');
-$this->addRoute('Publication/deletePublication/{publication_id}', 'Publication,deletePublication');
+$this->addRoute('Publication/modify/{publication_id}', 'Publication,modify');
+$this->addRoute('Publication/delete/{publication_id}', 'Publication,delete');
 

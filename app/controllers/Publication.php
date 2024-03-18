@@ -54,5 +54,53 @@ class Publication extends \app\core\Controller
         $data = ['publications' => $publications];
         $this->view('Publication/viewAll', $data);
     }
+
+    public function modify($publication_id) {
+        $publicationModel = new \app\models\Publication();
+        $publication = $publicationModel->getById($publication_id);
+    
+        if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
+            // Handle unauthorized access or publication not found
+            header('Location: /');
+            exit;
+        }
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Process form submission for editing publication
+            $publication->publication_title = $_POST['publication_title'];
+            $publication->publication_text = $_POST['publication_text'];
+            $publication->publication_status = $_POST['publication_status'];
+            $publicationModel->update($publication);
+    
+            // Redirect back to viewPublication page
+            header('Location: /Publication/viewAll');
+            exit;
+        } else {
+            // Render the form for editing publication
+            $data = ['publication' => $publication];
+            $this->view('Publication/modify', $data);
+        }
+    }
+
+    public function delete($publication_id){
+        $publicationModel = new \app\models\Publication();
+        $publication = $publicationModel->getById($publication_id);
+    
+        if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
+            // Handle unauthorized access or publication not found
+            header('Location: /Publication/viewAll');
+            exit;
+        }
+    
+        // // Delete associated comments first
+        // $commentModel = new \app\models\Comment();
+        // $commentModel->deleteCommentsForPublication($publication_id);
+    
+        // Then delete the publication
+        $publicationModel->delete($publication_id);
+    
+        header('Location: /Publication/viewAll'); // Redirect to homepage after deletion
+    }
+    
     
 }
