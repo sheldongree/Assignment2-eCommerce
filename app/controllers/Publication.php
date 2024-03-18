@@ -102,5 +102,53 @@ class Publication extends \app\core\Controller
         header('Location: /Publication/viewAll'); // Redirect to homepage after deletion
     }
     
+    public function personalPublication() {
+        if (!isset($_SESSION['profile_id'])) {
+            header('Location: /User/login');
+            exit;
+        }
     
+        $publicationModel = new \app\models\Publication();
+        $publications = $publicationModel->getByProfileId($_SESSION['profile_id']);
+    
+        $data = ['publications' => $publications];
+        $this->view('Publication/personalPublication', $data);
+    }
+
+    public function personalDelete($publication_id){
+        $publicationModel = new \app\models\Publication();
+        $publication = $publicationModel->getById($publication_id);
+    
+        if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
+            // Handle unauthorized access or publication not found
+            header('Location: /Publication/viewAll');
+            exit;
+        }
+    
+        // // Delete associated comments first
+        // $commentModel = new \app\models\Comment();
+        // $commentModel->deleteCommentsForPublication($publication_id);
+    
+        // Then delete the publication
+        $publicationModel->delete($publication_id);
+    
+        header('Location: /Publication/personalPublication'); // Redirect to homepage after deletion
+    }
+
+    public function search() {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['query'])) {
+            $query = $_GET['query'];
+    
+            // Perform the search in the model
+            $publicationModel = new \app\models\Publication();
+            $publications = $publicationModel->searchPublications($query);
+    
+            // Pass the search results to the view
+            $data = ['publications' => $publications];
+            $this->view('Publication/viewAll', $data);
+        } else {
+            // Handle invalid or empty search queries
+            header('Location: /Publication/viewAll');
+        }
+    }
 }

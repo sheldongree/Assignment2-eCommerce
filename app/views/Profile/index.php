@@ -18,7 +18,9 @@
 		<a href='/Profile/modify'>Modify my profile</a> | 
 		<a href='/Profile/delete'>Delete my profile</a> |
 		<a href='/User/logout'>Log Out</a> |
-		<a href='/Publication/createPost'>Create a post</a>
+		<a href='/Publication/createPost'>Create a post</a> |
+		<a href='/Publication/personalPublication'>View my publications</a>
+
 
 
 	</div>
