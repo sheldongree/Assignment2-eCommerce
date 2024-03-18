@@ -24,3 +24,13 @@ $this->addRoute('Example/passingData','Example,passingData');
 $this->addRoute('Example/count','Example,count');
 
 $this->addRoute('Publication/createPost', 'Publication,publishPost');
+$this->addRoute('Publication/createPost', 'Publication,publishPost');
+
+$this->addRoute('Publication/viewAll', 'Publication,viewAll');
+
+
+$this->addRoute('Publication/index/{publication_id}', 'Publication,index');
+$this->addRoute('Publication/addComment/{publication_id}', 'Publication,addComment');
+$this->addRoute('Publication/editPublication/{publication_id}', 'Publication,editPublication');
+$this->addRoute('Publication/deletePublication/{publication_id}', 'Publication,deletePublication');
+
