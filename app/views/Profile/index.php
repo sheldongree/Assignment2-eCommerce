@@ -35,7 +35,8 @@
 		<a href='/User/logout'>Log Out</a> |
 		<a href='/Publication/createPost'>Create a post</a> |
 		<a href='/Publication/personalPublication'>View my publications</a> |
-		<a href='/Publication/viewAll'>View all publications</a>
+		<a href='/Publication/viewAll'>View all publications</a> |
+		<a href='/Comment/viewUserComments'>View my comments</a>
 
 
 

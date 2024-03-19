@@ -16,6 +16,8 @@ $this->addRoute('Publication/delete/{publication_id}', 'Publication,delete');
 $this->addRoute('Publication/personalPublication', 'Publication,personalPublication');
 $this->addRoute('Publication/personalDelete/{publication_id}', 'Publication,personalDelete');
 $this->addRoute('Publication/search', 'Publication,search');
-//$this->addRoute('Publication/addComment/{publication_id}', 'Publication,addComment');
-
-
+$this->addRoute('Comment/addComment/{publication_id}', 'Comment,addComment');
+$this->addRoute('Comment/editComment/{publication_comment_id}', 'Comment,editComment');
+$this->addRoute('Comment/deleteComment/{publication_comment_id}', 'Comment,deleteComment');
+$this->addRoute('Publication/viewPublicationComments/{publication_id}', 'Comment,viewPublicationComments');
+$this->addRoute('Comment/viewUserComments', 'Comment,viewUserComments');

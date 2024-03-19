@@ -120,7 +120,7 @@
     <?php foreach ($publications as $publication): ?>
         <?php if ($publication->publication_status !== 'private'): ?>
             <div>
-                <h2><?php echo $publication->publication_title; ?></h2>
+            <h2><a href="/Publication/viewPublicationComments/<?php echo $publication->publication_id; ?>"><?php echo $publication->publication_title; ?></a></h2>
                 <p><?php echo $publication->publication_text; ?></p>
                 <?php if (isset ($_SESSION['profile_id']) && $publication->profile_id === $_SESSION['profile_id']): ?>
                     <a href="/Publication/modify/<?php echo $publication->publication_id; ?>" class="edit-link">Edit</a>
