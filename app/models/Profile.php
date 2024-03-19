@@ -51,7 +51,7 @@ class Profile extends \app\core\Model
 
 	public function getByName($name)
 	{
-		$SQL = 'SELECT * FROM profile WHERE CONCAT(first_name,\' \',last_name) = :name';
+		$SQL = 'SELECT * FROM profile WHERE CONCAT(first_name,\' \',last_name = :name';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			['name' => $name]
@@ -63,7 +63,7 @@ class Profile extends \app\core\Model
 
 	public function update()
 	{
-		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name WHERE profile_id = :profile_id';
+		$SQL = 'UPDATE profile SET first_name=:first_name,last_name=:last_name,middle_name=:middle_name WHERE profile_id = :profile_id';
 		$STMT = self::$_conn->prepare($SQL);
 		$STMT->execute(
 			[
