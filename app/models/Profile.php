@@ -11,9 +11,6 @@ class Profile extends \app\core\Model
 	public $last_name;
 	public $middle_name;
 
-	//CRUD
-
-	//create
 	public function insert()
 	{
 		$SQL = 'INSERT INTO profile(user_id,first_name,last_name, middle_name) VALUE (:user_id,:first_name,:last_name, :middle_name)';
@@ -28,7 +25,6 @@ class Profile extends \app\core\Model
 		);
 	}
 
-	//read
 	public function getForUser($user_id)
 	{
 		$SQL = 'SELECT * FROM profile WHERE user_id = :user_id';

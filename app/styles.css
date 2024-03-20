@@ -1,16 +1,17 @@
+/*Styles for the User and Profile views*/
 body {
-    background-color: #f8f9fa; /* Light gray */
-    font-family: Arial, sans-serif; /* Default font */
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
 .container {
     margin-top: 100px;
     max-width: 400px;
-    border: 1px solid #ced4da; /* Gray border */
+    border: 1px solid #ced4da;
     border-radius: 15px;
     padding: 30px;
-    background-color: #fff; /* White background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .container h1 {
@@ -35,13 +36,13 @@ body {
 }
 
 .form-control {
-    border: 1px solid #ced4da; /* Gray border */
+    border: 1px solid #ced4da;
     border-radius: 10px;
     padding: 10px;
 }
 
 input[type="submit"] {
-    background-color: #007bff; /* Blue */
+    background-color: #007bff;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -55,14 +56,14 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
 }
 
 a {
-    color: #007bff; /* Blue */
+    color: #007bff;
     text-decoration: none;
 }
 
 a:hover {
-    color: #0056b3; /* Darker blue */
+    color: #0056b3;
 }

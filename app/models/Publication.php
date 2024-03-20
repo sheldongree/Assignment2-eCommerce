@@ -59,7 +59,10 @@ class Publication extends \app\core\Model
 
     public function delete($publication_id)
     {
-        $SQL = 'DELETE FROM publication WHERE publication_id = :publication_id';
+        $commentModel = new \app\models\PublicationComment();
+        $commentModel->deleteByPublicationId($publication_id);
+
+        $SQL = "DELETE FROM publication WHERE publication_id = :publication_id";
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['publication_id' => $publication_id]);
     }
@@ -74,12 +77,22 @@ class Publication extends \app\core\Model
 
     }
 
+    // This method does a search in the database for publications where the title or content contain the specified query string.
     public function searchPublications($query)
     {
         $SQL = 'SELECT * FROM publication WHERE publication_title LIKE :query OR publication_text LIKE :query';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['query' => '%' . $query . '%']);
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Publication');
+        return $STMT->fetchAll();
+    }
+
+    public function getPublicationComments($publication_id)
+    {
+        $SQL = "SELECT * FROM publication_comment WHERE publication_id = :publication_id";
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['publication_id' => $publication_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\PublicationComment');
         return $STMT->fetchAll();
     }
 }
