@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2024 at 06:51 AM
+-- Generation Time: Mar 22, 2024 at 08:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,8 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `middle_name`) VALUES
 (22, 37, 'Hussain', 'Amin', 'K'),
-(24, 38, 'Sheldon', 'Green', 'J');
+(28, 38, 'Sheldon', 'Green', 'J'),
+(29, 39, 'jon ', 'don', 'doe');
 
 -- --------------------------------------------------------
 
@@ -63,8 +64,7 @@ CREATE TABLE `publication` (
 --
 
 INSERT INTO `publication` (`publication_id`, `profile_id`, `publication_title`, `publication_text`, `timestamp`, `publication_status`) VALUES
-(61, 22, 'Weather-Montreal', 'I think the weather in Montreal has been very nice lately!!', '2024-03-20 05:33:06', 'public'),
-(62, 24, 'Vanier', 'I think Vanier College\'s computer science department has been very crowed these days. Anyone knows why??', '2024-03-20 05:35:07', 'public');
+(61, 22, 'Weather-Montreal', 'I think the weather in Montreal has been very nice lately!!', '2024-03-20 05:33:06', 'public');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `publication_comment` (
 --
 
 INSERT INTO `publication_comment` (`publication_comment_id`, `publication_id`, `timestamp`, `profile_id`, `comment_text`) VALUES
-(15, 61, '2024-03-20 06:35:44', 24, 'Yeah, you\'re right. I feel that summer is backk my friend!!!!!');
+(29, 61, '2024-03-22 20:24:02', 29, 'comment on another post');
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`) VALUES
 (37, 'Hussain', '$2y$10$cPtSUMd6GV6wwqcZxPHQ4.PRCHqFMa3S5OY.nFyvEWonyjM9kChqC'),
-(38, 'Sheldon', '$2y$10$bZMBGUrCYaih//A5jVjN9OgjxkkJpXeOGZWdoDE74tlOhm0rGE2BS');
+(38, 'Sheldon', '$2y$10$bZMBGUrCYaih//A5jVjN9OgjxkkJpXeOGZWdoDE74tlOhm0rGE2BS'),
+(39, 'jon', '$2y$10$lIjQJsBDj6y2sRue7/BxB.H52MebmZyRlaGq8c4lWwqRDLgzmt9P6');
 
 --
 -- Indexes for dumped tables
@@ -148,25 +149,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `publication_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `publication_comment`
 --
 ALTER TABLE `publication_comment`
-  MODIFY `publication_comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `publication_comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
@@ -182,14 +183,14 @@ ALTER TABLE `profile`
 -- Constraints for table `publication`
 --
 ALTER TABLE `publication`
-  ADD CONSTRAINT `publication_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`);
+  ADD CONSTRAINT `publication_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `publication_comment`
 --
 ALTER TABLE `publication_comment`
-  ADD CONSTRAINT `publication_comment_ibfk_1` FOREIGN KEY (`publication_id`) REFERENCES `publication` (`publication_id`),
-  ADD CONSTRAINT `publication_comment_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`);
+  ADD CONSTRAINT `publication_comment_ibfk_1` FOREIGN KEY (`publication_id`) REFERENCES `publication` (`publication_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `publication_comment_to_profile` FOREIGN KEY (`profile_id`) REFERENCES `profile` (`profile_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

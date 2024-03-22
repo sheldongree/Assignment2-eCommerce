@@ -45,8 +45,7 @@ class Publication extends \app\core\Controller
         $publication = $publicationModel->getById($publication_id);
 
         if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
-            header('Location: /');
-            exit;
+            header('Location: /Publication/viewAll');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -56,7 +55,6 @@ class Publication extends \app\core\Controller
             $publicationModel->update($publication);
 
             header('Location: /Publication/viewAll');
-            exit;
         } else {
             $data = ['publication' => $publication];
             $this->view('Publication/modify', $data);
@@ -70,7 +68,7 @@ class Publication extends \app\core\Controller
 
         if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
             header('Location: /Publication/viewAll');
-            exit;
+            
         }
 
         $publicationModel->delete($publication_id);
@@ -98,7 +96,7 @@ class Publication extends \app\core\Controller
 
         if (!$publication || $publication->profile_id !== $_SESSION['profile_id']) {
             header('Location: /Publication/viewAll');
-            exit;
+            
         }
         $publicationModel->delete($publication_id);
 

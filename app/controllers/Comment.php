@@ -29,7 +29,7 @@ class Comment extends \app\core\Controller
 
             // Redirect back to the viewPublicationComments page after adding the comment
             header("Location: /Publication/viewPublicationComments/{$publication_id}");
-            exit;
+            
         }
     }
 
@@ -42,7 +42,7 @@ class Comment extends \app\core\Controller
         // Check if the comment exists and belongs to the current user
         if (!$comment || $comment->profile_id !== $_SESSION['profile_id']) {
             header('Location: /Comment/viewPublicationComments');
-            exit;
+          
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,7 +52,7 @@ class Comment extends \app\core\Controller
             $commentModel->update($publication_comment_id, $comment_text);
 
             header('Location: /Publication/viewPublicationComments/' . $comment->publication_id);
-            exit;
+           
         } else {
             $data = ['comment' => $comment];
             $this->view('Comment/editComment', $data);
@@ -70,7 +70,7 @@ class Comment extends \app\core\Controller
             $commentModel->delete($publication_comment_id);
         }
         header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit;
+       
     }
 
 

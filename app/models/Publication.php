@@ -80,6 +80,7 @@ class Publication extends \app\core\Model
     // This method does a search in the database for publications where the title or content contain the specified query string.
     public function searchPublications($query)
     {
+//        $SQL = 'SELECT * FROM publication WHERE CONCAT(publication_title, \' \', publication_text) LIKE :query';
         $SQL = 'SELECT * FROM publication WHERE publication_title LIKE :query OR publication_text LIKE :query';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['query' => '%' . $query . '%']);
